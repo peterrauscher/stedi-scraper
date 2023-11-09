@@ -5,8 +5,8 @@ elements = next_data("https://www.stedi.com/edi/x12-004010/element")
 TRANS_BASE_URL = "https://stedi.com/edi" + elements["page"].replace(
     "[release]", elements["props"]["pageProps"]["release"]
 )
-elements = elements["props"]["pageProps"]["elements"]
 composites = elements["props"]["pageProps"]["composites"]
+elements = elements["props"]["pageProps"]["elements"]
 elements_filtered = []
 composites_filtered = []
 
@@ -14,6 +14,7 @@ for i in range(len(elements)):
     url = TRANS_BASE_URL + "/" + elements[i]["id"]
     elements[i]["url"] = url
     element_details = next_data(url)
+    print(f"Getting details for element {elements[i]["id"]} from {url}")
     if not element_details["props"]["pageProps"]["elementInRelease"]:
         continue
     elements[i]["desc"] = element_details["props"]["pageProps"]["elt"]["definition"]

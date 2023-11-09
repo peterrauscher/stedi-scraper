@@ -11,7 +11,7 @@ transactions_filtered = []
 for i in range(len(transactions)):
     url = TRANS_BASE_URL.replace("transaction-set", transactions[i]["id"])
     transactions[i]["url"] = url
-    print(f"Getting details for {transactions[i]["id"]} from {url}")
+    print(f"Getting details for transaction {transactions[i]["id"]} from {url}")
     transaction_details = next_data(url)
     if not transaction_details["props"]["pageProps"]["setInRelease"]:
         continue

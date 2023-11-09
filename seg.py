@@ -1,8 +1,6 @@
 from help import grab_next_data as next_data
 import json
 
-# SEGMENTS
-
 segments = next_data("https://www.stedi.com/edi/x12-004010/segment")
 SEGMENT_BASE_URL = "https://stedi.com/edi" + segments["page"].replace(
     "[release]", segments["props"]["pageProps"]["release"]
@@ -12,6 +10,7 @@ segments_filtered = []
 for i in range(len(segments)):
     url = SEGMENT_BASE_URL + "/" + segments[i]["id"]
     segments[i]["url"] = url
+    print(f"Getting details for segment {segments[i]['id']} from {url}")
     segment_details = next_data(url)
     if not segment_details["props"]["pageProps"]["segmentInRelease"]:
         continue
