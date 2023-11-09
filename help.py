@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 from requests_ratelimiter import LimiterSession
 import json
 
-session = LimiterSession(per_minute=45)
+session = LimiterSession(per_second=0.5)
 
 
 def grab_next_data(url):

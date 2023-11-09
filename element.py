@@ -53,7 +53,8 @@ for i in range(len(composites)):
     composites_filtered.append(composites[i])
 
 
+with open("Composites.json", "w") as f:
+    f.write(json.dumps(composites_filtered))
+
 with open("Elements.json", "w") as f:
-    f.write(
-        json.dumps({"elements": elements_filtered, "composites": composites_filtered})
-    )
+    f.write(json.dumps(elements_filtered))
